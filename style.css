@@ -406,9 +406,12 @@ body {
   flex-direction: column;
   gap: 12px;
   transition: border-color 0.15s ease, transform 0.15s ease;
+  text-decoration: none;
+  color: inherit;
 }
 
 .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card:hover .card-link { text-decoration: underline; }
 
 .card h3 {
   font-family: var(--font-display);
@@ -621,7 +624,7 @@ body {
   max-width: 68ch;
   border-radius: 12px;
   overflow: hidden;
-  margin: 8px 0 0;
+  margin: 8px auto 0;
 }
 
 .post-cover img {
