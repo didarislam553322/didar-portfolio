@@ -558,13 +558,18 @@ body {
 
 .contact-list a:hover, .contact-list a:focus-visible { border-color: var(--accent); }
 
-.contact-card-rasp { background: var(--accent); border-color: var(--accent); color: #fff; }
-.contact-card-rasp .value { color: #f6d5de; }
-.contact-card-rasp:hover, .contact-card-rasp:focus-visible { background: #a32245; border-color: #a32245; color: #fff; }
+.contact-card-rasp,
+.contact-card-teal {
+  color: #fff !important;
+}
 
-.contact-card-teal { background: var(--teal); border-color: var(--teal); color: #fff; }
-.contact-card-teal .value { color: #cfe4e0; }
-.contact-card-teal:hover, .contact-card-teal:focus-visible { background: #155555; border-color: #155555; color: #fff; }
+.contact-card-rasp { background: var(--accent) !important; border-color: var(--accent) !important; }
+.contact-card-rasp .value { color: #fff !important; }
+.contact-card-rasp:hover, .contact-card-rasp:focus-visible { background: #a32245 !important; border-color: #a32245 !important; }
+
+.contact-card-teal { background: var(--teal) !important; border-color: var(--teal) !important; }
+.contact-card-teal .value { color: #fff !important; }
+.contact-card-teal:hover, .contact-card-teal:focus-visible { background: #155555 !important; border-color: #155555 !important; }
 
 .contact-list .value {
   font-family: var(--font-mono);
@@ -613,6 +618,7 @@ body {
 }
 
 .post-cover {
+  max-width: 68ch;
   border-radius: 12px;
   overflow: hidden;
   margin: 8px 0 0;
