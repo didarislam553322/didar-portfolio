@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Structuring a Product Requirements Document: Section-by-Section Rationale — Didar Islam</title>
-  <meta name="description" content="A standard PRD walkthrough where every section has a job, from evidence-anchored problem statements to visible open questions.">
+  <meta name="description" content="A good PRD lets any engineer build the same product. Here's exactly what makes that actually possible.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,23 +38,34 @@
 
 <section class="section">
   <div class="wrap prose">
-<p>A Product Requirements Document (PRD) is the artifact that translates a product decision into buildable specifications. It sits between discovery and delivery in the Software Development Life Cycle (SDLC), which is the end-to-end process of planning, building, testing, and releasing software. This post walks through a standard PRD structure and explains why each section exists.</p>
+<p>A <strong>Product Requirements Document (PRD)</strong> is the document that turns a product decision into something engineers can actually build. It sits between the "figuring out what to build" stage and the "actually building it" stage of the product process. Here's what goes in each section, and why.</p>
+<p>To keep this concrete, one example runs through the whole post: a feature that automatically flags mismatched invoices for finance teams.</p>
 <h2>1. Problem Statement</h2>
-<p>The document opens with the user problem, not the solution. A well-formed problem statement names the affected user, the friction, and the evidence. For example: "Finance administrators at mid-size firms spend an average of 4.2 hours per week manually reconciling invoice mismatches, based on 18 requirements gathering interviews conducted in Q2." Requirements gathering is the structured collection of user needs through interviews, surveys, and support ticket analysis. Anchoring the PRD in evidence prevents the most common failure mode: building a solution in search of a problem.</p>
+<p>The document starts with the user's problem, not your solution. A good problem statement names three things: who is affected, what's frustrating them, and proof that it's real.</p>
+<p>Example: "Finance administrators at mid-size firms spend an average of 4.2 hours a week manually finding invoice mismatches, based on 18 user interviews conducted in the second quarter."</p>
+<p>That last part, the interviews, matters. Writing down the evidence stops the most common mistake in this process: building a feature that solves nothing, because nobody checked if the problem was real first.</p>
 <h2>2. Goals and Success Metrics</h2>
-<p>This section states what the feature must achieve in measurable terms. A useful discipline is pairing each goal with a numeric target and a measurement source: "Reduce reconciliation time from 4.2 to under 1.5 hours per week, measured by in-product time tracking." If a goal cannot be measured, it should be rewritten until it can.</p>
+<p>This section says what the feature needs to accomplish, in numbers you can actually check later. Pair every goal with a number and a way to measure it.</p>
+<p>Example: "Reduce reconciliation time from 4.2 hours to under 1.5 hours per week, tracked using in-product time logs."</p>
+<p>If you cannot write a goal with a number attached, keep rewriting it until you can.</p>
 <h2>3. User Stories</h2>
-<p>A user story is a short requirement written from the user's perspective in the format: "As a [role], I want [capability], so that [benefit]." For the reconciliation example: "As a finance administrator, I want mismatched invoices flagged automatically, so that I only review exceptions." Stories keep the document oriented on outcomes rather than implementation details, which remain the engineering team's domain.</p>
+<p>A <strong>user story</strong> is a short requirement written from the user's point of view, in this format: "As a [role], I want [capability], so that [benefit]."</p>
+<p>For this feature: "As a finance administrator, I want mismatched invoices flagged automatically, so that I only have to review the ones that are actually wrong."</p>
+<p>Stories keep the document focused on what the user needs, not how engineers will build it. The "how" stays with the engineering team.</p>
 <h2>4. Acceptance Criteria</h2>
-<p>Acceptance criteria are the testable conditions that define when a story is complete. Each criterion must produce a binary pass or fail. For the flagging story: "Given an invoice whose total differs from the purchase order by more than 1%, the system marks it as an exception within 60 seconds of ingestion." Quality Assurance (QA), the discipline of verifying that software behaves as specified, builds its test cases directly from these criteria. Vague criteria produce vague tests, and vague tests ship defects.</p>
+<p><strong>Acceptance criteria</strong> are the specific, checkable conditions that tell you a story is actually done. Each one needs to have a clear yes or no answer, nothing fuzzy.</p>
+<p>Example: "If an invoice total is more than 1% different from its purchase order, the system marks it as an exception within 60 seconds of receiving it."</p>
+<p>The <strong>QA (Quality Assurance)</strong> team, the people who test that software actually works as intended, build their tests directly from criteria like this. If the criteria are vague, the tests will be vague too, and vague tests let bugs slip through.</p>
 <h2>5. Scope and Non-Goals</h2>
-<p>Listing what the feature will not do is as important as listing what it will. A non-goals section such as "This release does not support multi-currency reconciliation" prevents scope creep, the gradual expansion of requirements after work has begun. Scope creep is a schedule risk with compounding cost: an addition requested at 80% completion can force rework of finished components.</p>
+<p>Saying what a feature will NOT do matters just as much as saying what it will do. Example: "This release does not support invoices in multiple currencies."</p>
+<p>Without this, you get <strong>scope creep</strong>, meaning the requirements quietly grow after work has already started. Scope creep gets more expensive the later it happens. A change requested when the feature is 80% built can force the team to redo work that was already finished.</p>
 <h2>6. Dependencies, Risks, and Open Questions</h2>
-<p>The closing section records what the feature relies on (an upstream API, a data migration), what could fail, and what remains undecided. Leaving open questions visible is preferable to premature answers; it tells reviewers exactly where their input is needed.</p>
+<p>This last section lists what the feature depends on (like another team's data or an outside system), what could go wrong, and what's still undecided.</p>
+<p>Leaving a question open and visible is better than guessing at an answer just to fill the section. It tells whoever reads the document exactly where you need their input.</p>
 <h2>Where the Document Lives</h2>
-<p>A PRD is a living document, not a one-time handoff. Teams typically maintain it in a collaborative workspace such as Confluence or Notion, linked directly to the corresponding development tickets so that engineers, designers, and QA reference a single source of truth. When a decision changes, the PRD changes first, and the change history becomes a record of why the product evolved the way it did.</p>
-<h2>Practical Summary</h2>
-<p>The structure above follows a deliberate logic: evidence establishes the problem, metrics define success, stories express the need, acceptance criteria make it testable, non-goals contain it, and open questions invite review. A PRD that holds this chain together can be handed to any engineer on the team and produce the same product. That reproducibility is the test of whether the document is done.</p>
+<p>A PRD should stay alive and get updated, not get written once and forgotten. Most teams keep it in a shared workspace like Confluence or Notion, linked to the actual engineering tickets, so everyone (engineers, designers, QA) is looking at the same source of truth. When a decision changes, update the PRD first, and keep the change history so there's a record of why the product ended up the way it did.</p>
+<h2>Bottom Line</h2>
+<p>Each section builds on the last: evidence proves the problem is real, metrics define what success looks like, stories describe the need in the user's words, acceptance criteria make it testable, non-goals keep it contained, and open questions invite the right people to weigh in. A good test for whether a PRD is actually finished: could you hand it to any engineer on the team and have them build the same product? If yes, it's done.</p>
   </div>
 </section>
 

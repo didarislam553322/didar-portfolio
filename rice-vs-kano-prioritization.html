@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Comparative Analysis of RICE and Kano Prioritization Frameworks — Didar Islam</title>
-  <meta name="description" content="Two prioritization frameworks, one scoring and one classifying, and the decision points where each earns its place.">
+  <meta name="description" content="One framework ranks your backlog with numbers. The other sorts it by what customers actually value most.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,33 +38,32 @@
 
 <section class="section">
   <div class="wrap prose">
-<p>Feature prioritization is the process of deciding which items in a product backlog should be built first. Two widely used frameworks approach this problem from different angles: RICE, which produces a numerical score, and the Kano model, which classifies features by their effect on customer satisfaction. This post defines both, works through the arithmetic, and identifies where each is most appropriate.</p>
-<h2>The RICE Framework</h2>
-<p>RICE stands for Reach, Impact, Confidence, and Effort. It was developed at Intercom as a scoring method for backlog management.</p>
+<p><strong>Feature prioritization</strong> is just the process of deciding which item on your backlog gets built first. Two popular tools handle this differently: <strong>RICE</strong> gives you a number, and the <strong>Kano model</strong> sorts features into categories based on how much they actually matter to customers. This post explains both.</p>
+<p>To keep this concrete, one example runs through the whole post: an accounting software company deciding what to build next.</p>
+<h2>RICE: Turning a Decision Into a Number</h2>
+<p>RICE stands for Reach, Impact, Confidence, and Effort. It was built at Intercom as a way to score backlog items.</p>
 <ul>
-<li><strong>Reach</strong> is the number of users affected in a given period, for example 2,000 users per quarter.</li>
-<li><strong>Impact</strong> is the expected effect per user, scored on a scale (3 = massive, 2 = high, 1 = medium, 0.5 = low, 0.25 = minimal).</li>
-<li><strong>Confidence</strong> is the team's certainty in the Reach and Impact estimates, expressed as a percentage. It is measured by the quality of supporting evidence, typically using three tiers: 100% when both Reach and Impact are backed by product analytics or experiment data, 80% when one estimate rests on data and the other on informed judgment, and 50% when the estimates are largely opinion. For example, if Reach comes from actual usage logs but Impact is a designer's estimate, the feature receives 80%.</li>
-<li><strong>Effort</strong> is the estimated work required, measured in person-months.</li>
+<li><strong>Reach</strong>: how many users this affects in a given time period. Example: 2,000 users per quarter.</li>
+<li><strong>Impact</strong>: how much it affects each user, on a simple scale (3 = massive, 2 = high, 1 = medium, 0.5 = low, 0.25 = minimal).</li>
+<li><strong>Confidence</strong>: how sure you are about your Reach and Impact numbers, as a percentage. Use 100% if both numbers come from real usage data or a real experiment. Use 80% if one number is backed by data and the other is an educated guess. Use 50% if both numbers are mostly opinion.</li>
+<li><strong>Effort</strong>: how much work it takes, measured in person-months (one person working for one month equals one person-month).</li>
 </ul>
-<p>The formula is:</p>
-<p class="formula">RICE score = (Reach × Impact × Confidence) / Effort</p>
-<p>Consider a proposed dashboard export feature: Reach of 2,000 users per quarter, Impact of 1, Confidence of 80%, and Effort of 2 person-months.</p>
-<p class="formula">RICE score = (2,000 × 1 × 0.8) / 2 = 800</p>
-<p>A competing feature scoring 400 would rank below it. Tools such as Jira, Productboard, and Aha! support custom fields for recording these scores directly against backlog items.</p>
-<h2>The Kano Model</h2>
-<p>The Kano model, introduced by Professor Noriaki Kano in 1984, classifies features by how their presence or absence affects customer satisfaction. The three primary categories are:</p>
-<ul>
-<li><strong>Basic (must-be) features:</strong> expected by default. Their absence causes dissatisfaction; their presence adds no delight. In a SaaS (Software as a Service) accounting product, password reset, data export, and reliable uptime are basic features. No customer praises them, but their absence triggers churn.</li>
-<li><strong>Performance features:</strong> satisfaction rises proportionally with quality. In the same accounting product, report generation speed and the number of supported bank integrations are performance features. Ten integrations satisfy more than five, and twenty satisfy more than ten.</li>
-<li><strong>Delighters (attractive features):</strong> unexpected additions that increase satisfaction but cause no dissatisfaction if absent. An automated anomaly alert that flags an unusual expense before the customer notices it is a delighter. Nobody requested it, yet it becomes the feature customers mention in reviews.</li>
-</ul>
-<p>Classification is derived from a structured survey in which respondents answer one functional question (how they feel if the feature exists) and one dysfunctional question (how they feel if it does not).</p>
-<p>The framework is most valuable at specific decision points. A SaaS company entering a mature market, such as a new entrant in project management software, should use Kano to confirm it has covered every basic feature competitors already offer before investing in differentiation. Conversely, a market leader defending its position should use Kano survey data to identify delighters, because basics and performance features are already table stakes across the category. Kano is also useful over time: delighters decay into basics as markets mature. Cloud file syncing was a delighter in 2008 and is a basic feature today, which is why Kano classifications should be re-surveyed periodically rather than treated as permanent.</p>
-<h2>Comparison and Recommended Use</h2>
-<p>RICE supports data-driven decision making when quantitative inputs are available and the team needs a defensible ranking across many candidate features. Its weakness is false precision: a score built on weak estimates inherits their error.</p>
-<p>Kano is stronger earlier in discovery, when the question is not "which feature ranks highest" but "which category of value does this feature provide." Its weakness is that it does not account for engineering cost.</p>
-<p>In practice the two are complementary. Use Kano to ensure the roadmap covers basic and performance features before delighters, then apply RICE within each category to sequence the work. A prioritization process that combines classification with scoring produces a backlog that is both balanced and rankable.</p>
+<p>The formula: <strong>RICE score = (Reach x Impact x Confidence) / Effort</strong></p>
+<p>Here's the accounting company's example: a new "export dashboard to PDF" feature. Reach is 2,000 users a quarter. Impact is 1 (medium). Confidence is 80%, since Reach comes from real usage logs but Impact is a designer's estimate. Effort is 2 person-months.</p>
+<p>RICE score = (2,000 x 1 x 0.8) / 2 = 800</p>
+<p>If a competing feature scores 400, the export feature wins the ranking. Tools like Jira, Productboard, or Aha! let you track these scores directly on your backlog.</p>
+<h2>Kano: Sorting Features by What They Actually Do for Users</h2>
+<p>The Kano model, created by Professor Noriaki Kano in 1984, sorts features into three groups based on how they affect customer satisfaction.</p>
+<p><strong>Basic features.</strong> Users expect these by default. Having them adds no extra happiness, but missing them makes people angry. In the accounting product: password reset, exporting your data, and the app actually staying online. Nobody praises these in a review, but losing them makes customers leave.</p>
+<p><strong>Performance features.</strong> The better these are, the happier users get, in a straight line. In the same product: how fast reports generate, and how many banks the software connects to. Ten bank connections make users happier than five, and twenty make them happier than ten.</p>
+<p><strong>Delighters.</strong> Unexpected extras that make people happy, but nobody's upset if they're missing. Example: an alert that catches a weird, unusual expense before the customer even notices it themselves. Nobody asked for this, but it's the kind of feature people mention by name in reviews.</p>
+<p>You figure out which category a feature falls into by surveying users with two questions: how would you feel if this existed, and how would you feel if it did not.</p>
+<h2>When to Use Which One</h2>
+<p>Kano works best early on, when you're not trying to rank features yet, just trying to figure out what kind of value each one provides. A company entering an already crowded market (a new project management tool, for example) should use Kano first, to make sure it has every basic feature competitors already have, before spending time on anything fancy. A company that's already the market leader should use Kano to find delighters instead, since the basics are already assumed by that point.</p>
+<p>Kano also changes over time. Cloud file syncing felt like a delighter back in 2008. Today it's just a basic feature everyone expects. That's why it's worth re-running the Kano survey every so often instead of treating the results as permanent.</p>
+<p>RICE works best once you already have a list of candidate features and need a defensible way to rank them using real numbers. Its weakness is that a RICE score is only as good as the estimates that went into it. Weak guesses produce a precise-looking number that is still just a guess.</p>
+<h2>Bottom Line</h2>
+<p>Use Kano first, to make sure the roadmap covers the basics and the performance features before chasing anything flashy. Then use RICE within each category to decide what order to actually build things in. Used together, you get a backlog that's both balanced across the right kinds of value, and ranked by real numbers within each one.</p>
   </div>
 </section>
 

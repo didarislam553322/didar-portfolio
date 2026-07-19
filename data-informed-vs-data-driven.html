@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data-Informed Versus Data-Driven Decision Making in Product Development — Didar Islam</title>
-  <meta name="description" content="When the metric should decide, when it should only advise, and a two-axis rule for telling the difference.">
+  <title>Data-Informed vs. Data-Driven Decision Making in Product Development — Didar Islam</title>
+  <meta name="description" content="Data should decide plenty of product choices. This post explains which ones still need human judgment too.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
 <header class="page-head">
   <div class="wrap">
     <a class="back-link" href="blog.html">← All posts</a>
-    <h1>Data-Informed Versus Data-Driven Decision Making in Product Development</h1>
+    <h1>Data-Informed vs. Data-Driven Decision Making in Product Development</h1>
     <div class="post-meta">
       <span class="tag tag-mari">Strategy</span>
       <span class="meta">3 min read · Didar Islam</span>
@@ -38,21 +38,29 @@
 
 <section class="section">
   <div class="wrap prose">
-<p>The two phrases are used interchangeably, but they describe different decision procedures. Data-driven decision making treats the metric as the decision rule: the number decides. Data-informed decision making treats the metric as one input weighed alongside qualitative evidence, strategic intent, and domain judgment. This post defines the distinction, shows where each procedure fails, and proposes a rule for choosing between them.</p>
-<h2>The Case for Data-Driven</h2>
-<p>When the decision is repeatable, the metric is well-instrumented, and the cost of error is low, letting the number decide is correct. Button placement, subject-line testing, and ranking-algorithm tuning are the canonical cases: an experiment produces a winner, and overriding the winner with opinion adds error.</p>
-<p>The infrastructure behind such decisions is a pipeline. Raw events land in a cloud data warehouse such as Snowflake; transformation tooling such as dbt (data build tool) converts raw events into modeled tables; SQL (Structured Query Language) queries produce the comparison; and the analysis surfaces in anything from Excel to dedicated business analysis tools. When this pipeline is trustworthy, high-volume low-stakes decisions should run through it without ceremony.</p>
-<h2>Where Data-Driven Fails</h2>
-<p>The procedure fails in three predictable ways.</p>
-<p>First, metrics measure the past of the current product. No query against existing usage data could have justified building a product category that does not yet exist, because the data describes behavior inside today's boundaries.</p>
-<p>Second, metrics optimize what they measure, including its side effects. A team driven purely by session length will ship features that extend sessions, whether or not longer sessions serve users. The formal name is surrogation: the measure replaces the goal it was meant to represent.</p>
-<p>Third, small samples masquerade as evidence. Suppose a pricing test shows variant B converting at 5.5% against variant A at 5.0%, from 800 users per arm. That is 44 conversions against 40, a difference well within sampling noise; a standard significance test would not reject the hypothesis that the variants are identical. A data-driven procedure that ships B "because the number is higher" is executing noise. Sample size arithmetic is the minimum protection: detecting a half-point lift from a 5% baseline reliably requires several thousand users per arm, not hundreds.</p>
-<h2>The Case for Data-Informed</h2>
-<p>Data-informed procedure adds two inputs the warehouse does not contain. The first is qualitative signal: feedback analysis, the systematic review of support tickets, interview transcripts, and reviews, captures the reasons behind behavior. Twenty churned-customer interviews can identify a cause that ten thousand rows of churn data only describe. The second is strategic intent: a company entering a new segment may correctly ship a feature the current usage data ranks last, because the data reflects the customers it has rather than the customers it wants.</p>
-<p>The risk of data-informed procedure is equally predictable: "informed" degrades into "decorative," where the data is consulted and then overridden by seniority. The protection is a written record. If a decision contradicts the metric, the reasoning and the expected result are logged, and the result is checked. Overrides that repeatedly fail their own predictions lose the privilege.</p>
-<h2>A Decision Rule</h2>
-<p>Classify each decision on two axes: reversibility and measurement quality. Reversible decisions with strong instrumentation should be data-driven; the experiment decides. Irreversible decisions, or those where the relevant evidence is qualitative or strategic, should be data-informed, with the dissenting data acknowledged in writing.</p>
-<p>The summary discipline is this: the question is never whether to use data, but whether the data available is sufficient to be the decision rule. When it is, defer to it. When it is not, say so explicitly and record the judgment being added, so that the judgment itself becomes measurable over time.</p>
+<p>People use these two phrases like they mean the same thing, but they describe two different ways of making a decision. <strong>Data-driven</strong> means the number decides, full stop. <strong>Data-informed</strong> means the number is one input, weighed alongside things like customer feedback, company strategy, and plain judgment. This post explains the difference, shows where each one breaks down, and gives a simple rule for choosing between them.</p>
+<h2>When to Let the Number Decide</h2>
+<p>Letting the data decide works well when a decision is repeatable, well-measured, and cheap to get wrong. Things like button placement, email subject lines, or tweaking a ranking algorithm are good examples. Run the test, let the winner win, and do not second-guess it with opinion.</p>
+<p>Behind decisions like these sits a data pipeline: raw user actions get stored in a <strong>data warehouse</strong> (a large cloud database, like Snowflake), then cleaned up into usable tables using tools like dbt, then queried using <strong>SQL</strong> (the standard language for asking questions of a database), and the results get reviewed in something like Excel. When that pipeline is reliable, small, low-risk decisions should run through it without much debate.</p>
+<h2>Where "Let the Data Decide" Breaks Down</h2>
+<p>This approach fails in three common ways.</p>
+<ol>
+<li>
+<p><strong>Data only shows the past.</strong> No amount of usage data could have told a team to build a brand new type of product, because that data only describes behavior inside the product you already have.</p>
+</li>
+<li>
+<p><strong>The metric becomes the goal, side effects and all.</strong> This is sometimes called <strong>surrogation</strong>, meaning the measurement quietly replaces the actual goal it was supposed to represent. A team chasing "session length" will build things that keep people on the app longer, whether or not that's actually good for them.</p>
+</li>
+<li>
+<p><strong>Small samples get mistaken for real evidence.</strong> Say a pricing test shows Option B converting at 5.5%, versus 5.0% for Option A, based on 800 users each. That is 44 conversions versus 40, a gap small enough to happen by pure chance. A proper statistical check would not treat that as a real difference. To reliably detect a gap that small, you typically need several thousand users per option, not hundreds.</p>
+</li>
+</ol>
+<h2>When to Bring in Judgment</h2>
+<p>Data-informed decisions add two things a database cannot give you. The first is qualitative feedback, meaning things like support tickets, customer interviews, and reviews, read carefully rather than just counted. Twenty interviews with customers who left can explain a "why" that ten thousand rows of usage data never will. The second is strategy: a company moving into a new market might correctly build a feature that today's usage data ranks last, because that data reflects the customers they have now, not the ones they're trying to win.</p>
+<p>The risk here is real too: "informed" can quietly turn into "ignored," where data gets reviewed and then overruled just because someone senior said so. The fix is to write it down. When a decision goes against the data, note the reasoning and what you expect to happen, then check later if you were right. Anyone whose gut calls keep missing loses the benefit of the doubt.</p>
+<h2>A Simple Rule</h2>
+<p>Look at two things: how easy the decision is to undo, and how good your data actually is. If a decision is easy to reverse and well-measured, let the data decide. If it's hard to undo, or the real evidence is more feedback and strategy than numbers, bring in judgment, and write down why.</p>
+<p>The real question is never "should we use data." It's whether the data you have is good enough to make the call by itself. When it is, trust it. When it isn't, say so out loud, and track whether your judgment turns out to be right.</p>
   </div>
 </section>
 

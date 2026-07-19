@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stakeholder Management Without Formal Authority: Principles and Practice — Didar Islam</title>
-  <meta name="description" content="An influence-interest map, the three currencies of trust, and why resistance is usually change management in disguise.">
+  <meta name="description" content="Nobody on the team reports to the product manager, so how does anything actually get done at all?">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,22 +38,36 @@
 
 <section class="section">
   <div class="wrap prose">
-<p>Product managers direct the work of engineers, designers, and analysts who do not report to them. Stakeholder engagement, the structured practice of identifying, informing, and aligning the people affected by a product decision, is therefore a core competency rather than a soft skill. This post presents a framework for exercising influence without formal authority.</p>
-<h2>Mapping the Stakeholder Landscape</h2>
-<p>The first step is an influence-interest matrix, a two-by-two grid that classifies each stakeholder by their power over the decision and their interest in its outcome. The four quadrants dictate four treatments: high influence and high interest stakeholders are managed closely with direct involvement; high influence and low interest stakeholders are kept satisfied with concise updates; low influence and high interest stakeholders are kept informed; low influence and low interest stakeholders are monitored.</p>
-<p>The matrix is worth drawing literally. A diagramming tool such as Visio makes the map shareable and forces explicit judgments about who sits where. Most alignment failures trace back to a high-influence stakeholder who was silently misplaced in the low-interest quadrant.</p>
-<h2>The Currency of Influence</h2>
-<p>Without reporting lines, influence rests on three assets.</p>
-<p>The first is evidence. A prioritization argument backed by usage data and customer quotes survives disagreement; an argument backed by opinion does not. This is why product advocacy, the practice of representing the user's interest inside the company, works best when it arrives with numbers attached.</p>
-<p>The second is prediction accuracy. A product manager who said a feature would lift conversion by 5% and delivered 5% is trusted on the next estimate. Keeping a written record of forecasts and outcomes compounds this asset over time.</p>
-<p>The third is reciprocity. Engineering leaders who receive early warning of scope changes extend flexibility when the product team needs it. The exchange rate is informal but real.</p>
-<h2>Communication Structure</h2>
-<p>Influence decays without a communication rhythm. A workable minimum is three channels operating at three speeds: asynchronous updates in Slack for daily coordination, a visible board in a tool such as Trello showing current priorities and their status, and a monthly written narrative explaining what changed in the plan and why. The written narrative matters most, because it is the only channel that records reasoning. Six months later, when a stakeholder asks why a feature was cut, the answer exists in writing rather than in contested memory.</p>
-<p>A useful quantitative discipline is the decision log: a running table of decisions, the date, the owner, and the dissent recorded at the time. Teams that keep one report fewer re-litigated decisions, because reopening a logged decision requires new information rather than renewed preference.</p>
-<h2>Managing Resistance</h2>
-<p>Resistance to product decisions is usually change management, the discipline of moving people from a current process to a new one, rather than disagreement about facts. The standard failure is announcing a change at the moment of implementation. The standard remedy is involving the resistant party in the option-evaluation stage, before the decision closes. A stakeholder who ranked the options, even if their preferred option lost, defends the process; a stakeholder who first saw the decision in a release note attacks it.</p>
-<h2>Practical Summary</h2>
-<p>Map stakeholders explicitly, invest in evidence and forecast accuracy as durable currency, run communication on a fixed rhythm with a written record, and move resistant parties upstream into the evaluation stage. Authority assigns work; influence aligns it. In product management only the second is available, and it is sufficient when practiced deliberately.</p>
+<p>Product managers direct the work of engineers, designers, and analysts, but none of those people actually report to them. That means getting people aligned is not a "nice to have" soft skill. It is a core part of the job. This post lays out a practical way to get buy-in when you have no formal power to demand it.</p>
+<p>To keep this concrete, one example runs through the whole post: a product manager trying to convince the team to prioritize fixing a slow checkout flow that's losing sales.</p>
+<h2>Step One: Map Out Who Actually Matters Here</h2>
+<p>Start by sorting every stakeholder into a simple 2x2 grid, based on two questions: how much power do they have over this decision, and how much do they actually care about the outcome. This is sometimes called an <strong>influence-interest matrix</strong>.</p>
+<ul>
+<li><strong>High power, high interest</strong> (like the VP of Engineering, who controls the roadmap and cares about checkout revenue): work with them closely and directly.</li>
+<li><strong>High power, low interest</strong> (like the CFO, who could block your budget but does not think about checkout day to day): send short, clear updates so they stay comfortable.</li>
+<li><strong>Low power, high interest</strong> (like the support team lead, who deals with checkout complaints daily but cannot approve engineering time): keep them informed regularly.</li>
+<li><strong>Low power, low interest</strong> (like a team in a completely different product line): check in occasionally, nothing more.</li>
+</ul>
+<p>Draw this out literally, on a whiteboard or in a tool like Visio. Most alignment problems trace back to one thing: a high-power person quietly getting placed in the wrong box, usually because nobody thought to ask how much they actually cared.</p>
+<h2>What Actually Buys You Influence</h2>
+<p>Without a reporting line to lean on, three things earn you real influence over time.</p>
+<p><strong>Evidence.</strong> An argument backed by real usage data and actual customer quotes survives pushback. An argument backed by opinion does not. If you tell engineering "checkout abandonment jumped 12% after the last redesign, based on 40,000 sessions," that argument holds up in a room. "I think this feels broken" does not.</p>
+<p><strong>A track record of being right.</strong> If you told the team a checkout fix would lift conversion by 5%, and it actually did, people trust your next estimate. Keep a simple written log of what you predicted and what actually happened. That log becomes more valuable every time you're right.</p>
+<p><strong>Reciprocity.</strong> If you give engineering leads a heads-up before a scope change instead of surprising them with one, they tend to extend you flexibility later, when you're the one who needs it. It's an informal trade, but it's a real one.</p>
+<h2>Keep a Steady Communication Rhythm</h2>
+<p>Influence fades fast if people stop hearing from you. A reasonable minimum is three channels, running at three different speeds:</p>
+<ul>
+<li>Quick async updates in Slack, for daily coordination.</li>
+<li>A visible board (in a tool like Trello) showing current priorities and their status.</li>
+<li>A written monthly update explaining what changed in the plan, and why.</li>
+</ul>
+<p>That monthly written update matters the most, because it's the only one that keeps a record of your actual reasoning. Six months from now, when someone asks why the checkout fix got pushed back a sprint, the answer should live in that document, not in someone's memory of a hallway conversation.</p>
+<p>It also helps to keep a <strong>decision log</strong>: a running table with the date, who owned the decision, and any objections raised at the time. Teams that keep one spend far less time reopening old arguments, because reopening a logged decision now requires new information, not just someone changing their mind.</p>
+<h2>Handling Pushback</h2>
+<p>Most resistance to a product decision is not really disagreement about the facts. It's what's called <strong>change management</strong>, meaning the discipline of moving people from an old way of working to a new one, and people resist change itself more than they resist any specific plan.</p>
+<p>The usual mistake is announcing a change right when it happens, with no warning. The fix is simple: bring the resistant person into the conversation while you're still weighing options, before anything is decided. Someone who got to rank the choices, even if their favorite one lost, will generally defend the final call. Someone who first heard about it in a release note will fight it.</p>
+<h2>Bottom Line</h2>
+<p>Map out who actually has power and who actually cares, build up evidence and a track record as your real currency, run a steady communication rhythm with a written record, and pull resistant people into the conversation early, not after the decision's made. You do not get authority in this job. You get influence, and if you're deliberate about building it, that's enough.</p>
   </div>
 </section>
 

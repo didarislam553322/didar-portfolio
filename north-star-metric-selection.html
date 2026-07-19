@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selecting and Validating a North Star Metric — Didar Islam</title>
-  <meta name="description" content="Three selection criteria, a worked decomposition, and the validation step most teams skip entirely.">
+  <meta name="description" content="Picking a north star metric is easy. Proving it predicts real results is the step most teams skip.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,23 +38,37 @@
 
 <section class="section">
   <div class="wrap prose">
-<p>A north star metric is the single measure a product team treats as its primary indicator of delivered value. The concept exists to solve a coordination problem: when every function optimizes its own dashboard, the product optimizes for nothing in particular. This post defines the selection criteria, works through an example, and describes how to validate the choice.</p>
-<h2>Selection Criteria</h2>
-<p>A defensible north star metric satisfies three conditions.</p>
-<p>First, it must measure value received by the user, not value extracted from the user. Revenue growth is an outcome of a good north star, not the north star itself, because revenue can rise temporarily while user value falls (for example, through aggressive pricing on a captive customer base).</p>
-<p>Second, it must be a leading indicator, meaning it moves before the business results do. Product adoption metrics typically lead; churn and revenue typically lag.</p>
-<p>Third, every team must be able to influence it. A metric only the sales team can move cannot coordinate a product organization.</p>
-<h2>A Worked Example</h2>
-<p>Consider a spreadsheet collaboration product. Candidate metrics include registered accounts, weekly active users, and documents edited by two or more people per week.</p>
-<p>Registered accounts fails the first criterion: an account that never returns received no value. Weekly active users is better but still ambiguous, since a user who opens the product and leaves counts as active. Documents edited by two or more people per week passes all three tests: it captures the collaborative value the product exists to deliver, it leads revenue (teams that collaborate renew), and engineering, design, and marketing can all influence it.</p>
-<p>The metric can then be decomposed into an input equation:</p>
-<p>Multi-editor documents per week = New accounts × Activation rate × Collaboration rate × Weekly retention</p>
-<p>If the current values are 1,000 new accounts, 40% activation, 30% collaboration, and 60% retention, the product generates 1,000 × 0.40 × 0.30 × 0.60 = 72 multi-editor documents per week from each new cohort. The decomposition shows where leverage sits: raising activation from 40% to 50% yields 90 documents, an 25% improvement from a single input. Teams assign ownership at the input level while the north star stays shared.</p>
-<h2>Instrumentation and Validation</h2>
-<p>Measurement requires event-level analytics. Product analytics platforms such as Amplitude and Mixpanel track the behavioral inputs (activation, collaboration events, retention cohorts), while Adobe Analytics and Google Analytics typically cover acquisition traffic feeding the top of the equation. Visualization layers such as Looker or Tableau then combine these sources into a single tree that the whole company reads the same way.</p>
-<p>Validation is the step most teams skip. A north star is a hypothesis that the chosen behavior predicts business results, and hypotheses require testing. The test is correlation over cohorts: segment historical accounts by their level of the north star behavior in their first month, then compare twelve-month retention and expansion revenue across segments. If accounts with high early collaboration retain at 85% while low-collaboration accounts retain at 40%, the metric is validated. If the segments retain identically, the metric is decorative and should be replaced.</p>
-<h2>Practical Summary</h2>
-<p>Choose a metric that measures user value, leads revenue, and is influenceable by every team. Decompose it into inputs so that ownership is assignable and the arithmetic of improvement is visible. Then validate it against retention cohorts before asking an organization to steer by it. A north star that fails validation is worse than no metric at all, because it aims the entire company at a number that does not matter.</p>
+<p>A <strong>north star metric</strong> is the one number a team treats as its main sign of success. It exists to solve a simple problem: when every team tracks its own numbers, no one is actually pulling in the same direction. This post covers how to pick one, how to test it with a real example, and how to check that it actually works.</p>
+<h2>Three Rules for Picking One</h2>
+<p>A good north star metric needs to pass three tests.</p>
+<ol>
+<li>
+<p><strong>It measures value the user actually got, not value you took from them.</strong> Revenue is a result of a good metric, not the metric itself. Revenue can go up for a while even as users get less value, for example if you raise prices on customers who feel stuck with you.</p>
+</li>
+<li>
+<p><strong>It moves before the business results do.</strong> This is called a <strong>leading indicator</strong>, meaning a number that changes early and warns you what is coming, before things like churn (customers leaving) or revenue show up in the numbers.</p>
+</li>
+<li>
+<p><strong>Every team can actually move it.</strong> If only the sales team can affect the number, it cannot guide the whole company.</p>
+</li>
+</ol>
+<h2>A Real Example</h2>
+<p>Take a spreadsheet collaboration tool. Three possible metrics:</p>
+<ul>
+<li><strong>Registered accounts.</strong> Fails rule one. Someone who signs up and never comes back got zero value.</li>
+<li><strong>Weekly active users.</strong> Better, but still fuzzy. Someone who opens the app for five seconds and leaves still counts as "active."</li>
+<li><strong>Documents edited by two or more people per week.</strong> This passes all three tests. It captures the actual point of the product (working together), it predicts future revenue (teams that collaborate tend to stick around and pay), and every team, from engineering to marketing, can influence it.</li>
+</ul>
+<p>You can break that metric down into the pieces that build it:</p>
+<p><strong>Multi-editor documents per week = new accounts × activation rate × collaboration rate × weekly retention</strong></p>
+<p>(Activation rate means the percent of new users who actually start using the product. Retention means the percent who are still around later.)</p>
+<p>Say the current numbers are 1,000 new accounts, 40% activation, 30% collaboration, and 60% retention. Multiply those out and you get 72 multi-editor documents a week from each new group of sign-ups. This breakdown shows exactly where to focus. Raise activation from 40% to 50%, and that number jumps to 90, a 25% gain from changing just one piece.</p>
+<h2>Measuring It and Checking It's Real</h2>
+<p>To track this, you need event-level data, meaning data on individual actions users take, not just totals. Tools like Amplitude or Mixpanel track behavior (activation, collaboration, retention), while tools like Google Analytics or Adobe Analytics usually track how people found you in the first place. Dashboard tools like Looker or Tableau then pull it all into one view everyone can read the same way.</p>
+<p>Here is the step most teams skip: testing whether the metric actually predicts anything. Take past customers, group them by how much they did the "north star" behavior in their first month, and compare how many were still around a year later.</p>
+<p>If customers who collaborated a lot early on kept 85% retention, while customers who barely collaborated kept only 40%, the metric is proven. If both groups look the same a year later, the metric does not actually predict anything, and you should pick a different one.</p>
+<h2>Bottom Line</h2>
+<p>Pick a metric that reflects real user value, shows up early, and every team can move. Break it into its parts so people know exactly what to work on. Then test it against real retention numbers before asking the whole company to chase it. A metric that fails that test is worse than having no metric, since it points everyone at a number that does not matter.</p>
   </div>
 </section>
 

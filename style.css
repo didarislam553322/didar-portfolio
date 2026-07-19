@@ -558,13 +558,13 @@ body {
 
 .contact-list a:hover, .contact-list a:focus-visible { border-color: var(--accent); }
 
-.contact-card-rasp { background: var(--rose-tint); border-color: #ecc4d1; }
-.contact-card-rasp .value { color: #9c2143; }
-.contact-card-rasp:hover, .contact-card-rasp:focus-visible { border-color: var(--accent); }
+.contact-card-rasp { background: var(--accent); border-color: var(--accent); color: #fff; }
+.contact-card-rasp .value { color: #f6d5de; }
+.contact-card-rasp:hover, .contact-card-rasp:focus-visible { background: #a32245; border-color: #a32245; color: #fff; }
 
-.contact-card-teal { background: var(--teal-tint); border-color: #c2d9d5; }
-.contact-card-teal .value { color: var(--teal-ink); }
-.contact-card-teal:hover, .contact-card-teal:focus-visible { border-color: var(--teal); }
+.contact-card-teal { background: var(--teal); border-color: var(--teal); color: #fff; }
+.contact-card-teal .value { color: #cfe4e0; }
+.contact-card-teal:hover, .contact-card-teal:focus-visible { background: #155555; border-color: #155555; color: #fff; }
 
 .contact-list .value {
   font-family: var(--font-mono);

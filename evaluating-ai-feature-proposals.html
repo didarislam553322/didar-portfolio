@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evaluating AI Feature Proposals: A Strategic Checklist — Didar Islam</title>
-  <meta name="description" content="A checklist for AI proposals covering unit economics, error tolerance, defensibility, and the go-to-market claim.">
+  <meta name="description" content="Six practical questions worth asking before your team commits real engineering time to any new AI feature.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,21 +38,33 @@
 
 <section class="section">
   <div class="wrap prose">
-<p>Artificial intelligence features now appear in most product roadmap discussions, often justified by competitive anxiety rather than user need. This post presents a six-question checklist for evaluating an AI feature proposal before committing engineering capacity, with the economics made explicit.</p>
-<h2>Question 1: What problem does this solve without the word "AI" in the sentence?</h2>
-<p>Restate the proposal as a user problem. "Add an AI assistant" is a technology; "reduce the 40 minutes users spend drafting routine status reports" is a problem. If the restatement is impossible, the proposal is a solution seeking a justification, and market research, the structured study of user needs and competitive offerings, should precede any build decision. Interviews and demand testing establish whether the pain is real and how many users share it.</p>
-<h2>Question 2: Is probabilistic output acceptable in this workflow?</h2>
-<p>AI systems are probabilistic: identical inputs can yield varying outputs, and a known error rate is intrinsic. Some workflows tolerate this well (drafting, summarization, recommendation), because a human reviews the output. Others do not (compliance filings, financial postings, inventory commitments). The test is the cost of a single wrong output multiplied by its frequency. A feature that is 95% accurate produces one error per twenty uses; at 1,000 daily uses, that is 50 daily errors the workflow must absorb.</p>
-<h2>Question 3: Do the unit economics survive scale?</h2>
-<p>AI features carry marginal cost per use, unlike conventional software features whose marginal cost approaches zero. Suppose inference costs $0.04 per request and the average subscriber makes 400 requests monthly: the feature costs $16 per user per month. If the subscription price is $29, the feature consumes 55% of revenue. This is where pricing strategy, the design of how a product captures value, becomes inseparable from the build decision: the options are usage caps, a premium tier, or absorbing the margin, and each changes the product's positioning. A proposal without a unit-cost model is unevaluated.</p>
-<h2>Question 4: What data advantage, if any, makes this defensible?</h2>
-<p>If a feature is a thin layer over a model any competitor can license, parity arrives within a quarter. Defensibility comes from proprietary inputs: unique data, workflow context, or distribution. A CPG (Consumer Packaged Goods) demand-forecasting product trained on a retailer's own sell-through history, or one integrated with transaction records inside an ERP (Enterprise Resource Planning) system such as SAP, has an input competitors cannot copy. A generic chatbot does not.</p>
-<h2>Question 5: How will quality be measured after launch?</h2>
-<p>Conventional features are done when they pass acceptance tests; AI features drift as usage patterns and underlying models change. The proposal must name its quality metrics (accuracy against a labeled evaluation set, user acceptance rate of suggestions, correction frequency) and its review cadence. A feature nobody plans to measure will degrade unobserved.</p>
-<h2>Question 6: What is the go-to-market claim, precisely?</h2>
-<p>Go-to-market (GTM) strategy, the plan for reaching and converting the target market, requires a claim that marketing can state and the product can survive. "Cuts report drafting time by half, verified in beta with 200 users" is a durable claim. "AI-powered" is a category label that differentiates nothing by the time it ships.</p>
-<h2>Practical Summary</h2>
-<p>An AI feature proposal is ready for the roadmap when it names a problem independent of the technology, fits a workflow that tolerates error, carries a unit-cost model that survives its own success, rests on a defensible input, commits to post-launch measurement, and supports a verifiable market claim. Proposals that pass all six are rarer than current roadmaps suggest, which is precisely the argument for the checklist.</p>
+<p>AI features show up in nearly every roadmap discussion now, often because a competitor has one, not because users asked for it. Here are six questions to ask before committing engineering time to one.</p>
+<p>To keep things concrete, imagine the same proposal running through all six: a team wants to add an "AI assistant" to a project management tool, one that reads a project and writes a status update for you.</p>
+<h2>1. What problem does this solve, without using the word "AI"?</h2>
+<p>Here's the trap: it's easy to get excited about a technology and start building before anyone checks if it actually fixes something. "Let's add an AI assistant" sounds exciting, but it doesn't say what's broken for the user. It names a piece of technology, not a problem the user actually has.</p>
+<p>So do this test: write down the problem in one sentence, without using the word "AI" anywhere in it. If you can do that, you have a real problem. If you can't, you don't have a problem yet, you have a piece of technology someone wants to build.</p>
+<p>Example: "Add an AI assistant" fails the test, it only names a tool. "Managers spend 40 minutes every Friday writing status updates by hand" passes the test, it names an actual pain, with a number attached, that you could go verify by asking five managers if it's true for them.</p>
+<p>Why this matters: skip this test, and here's what actually happens. Say the team spends two months building the AI assistant anyway. It goes live and is released to all users ("ships" is the common word for this in product teams). Three months later, someone checks the usage data and finds that only 8 out of 500 managers ever clicked "generate update." The other 492 kept writing their updates by hand, the old way, because it turns out the 40-minute task was never their real complaint. Two months of engineering time went into a feature almost nobody opens, and the team only found that out after building it, not before.</p>
+<h2>2. Can this workflow handle an answer that's sometimes wrong?</h2>
+<p>AI tools are <strong>probabilistic</strong>, meaning the same input can give you a different answer each time, and mistakes are part of the deal, not a bug you'll eventually fix.</p>
+<p>For the status update assistant, this is low-risk: if the AI writes "the team shipped 4 features" instead of 5, the manager reads it, notices, and fixes it before sending. Nobody gets hurt.</p>
+<p>Now imagine the same AI logic used to auto-approve expense reports instead. A 5% error rate there means 1 in 20 approvals is wrong, and if the tool processes 1,000 reports a day, that's 50 bad approvals a day, with real money attached. Same error rate, completely different risk. Match the feature to a workflow where a wrong answer is cheap to catch, not one where it's expensive to miss.</p>
+<h2>3. Do the costs still make sense once this scales up?</h2>
+<p>A normal software feature, like a new filter or a new button, costs almost nothing per use once it's built. AI features are different: every single use costs real money, because each request runs through a paid model.</p>
+<p>Let's return to the status update assistant example. Say each generated update costs 4 cents to produce, and each manager generates one update per week, four per month. That's 16 cents a month per user, cheap. But now say the team adds "generate a draft for every task, every day" instead of once a week. Now it's 30 requests a month per user instead of 4, or $1.20 a month per user. If the whole plan only costs $10 a month, that one feature just ate 12% of revenue on its own.</p>
+<p>The lesson: before building, calculate cost per user per month, and check that number against what you actually charge. If nobody's done that math, the proposal isn't ready to build yet.</p>
+<h2>4. What makes this hard for a competitor to copy?</h2>
+<p>If your "AI assistant" is just a thin layer over a public AI model, like ChatGPT with a nice interface, then any competitor can copy it in a weekend, because they can license the same model you did.</p>
+<p>What's harder to copy is data or context nobody else has. In the status update example: an assistant that just summarizes generic text is copyable by anyone. An assistant that pulls from your actual project timeline, task history, and who's blocked on what, all data that lives inside your specific tool, is much harder for a competitor to replicate, because they don't have access to that data.</p>
+<p>Ask yourself: if a competitor launched the exact same feature next month, would it actually work as well for them? If yes, you don't have an advantage, you have a head start, and head starts run out.</p>
+<h2>5. How will you know if it's working, after launch?</h2>
+<p>A normal feature is done when it passes testing and ships. AI features keep changing after launch, because usage patterns shift and the underlying model itself gets updated by its provider.</p>
+<p>For the status update assistant, "done" isn't enough. You need an actual plan: check weekly how often managers edit the AI's draft before sending it. If 90% of managers are rewriting half the update, the feature isn't working, even though it technically "launched successfully." Without that check, you won't find out it's broken until managers quietly stop using it.</p>
+<h2>6. What exactly will marketing say about it?</h2>
+<p>The claim needs to be specific enough that it's still true after people actually use the product.</p>
+<p>"AI-powered status updates" is not a claim, it's a label, and every competitor will use the same one within a year. "Cuts your Friday status update from 40 minutes to 5, tested with 200 real managers" is a claim you can prove, defend, and that a customer can actually evaluate before buying.</p>
+<h2>Bottom Line</h2>
+<p>A proposal is ready for the roadmap once it names a real problem you've verified with users, fits a workflow where a wrong answer is cheap, has a cost-per-user number that still works at scale, relies on something a competitor cannot easily copy, has a real plan for being checked after launch, and can back up its marketing claim with a number. Very few ideas survive all six questions, which is exactly why it's worth asking them before you build, not after.</p>
   </div>
 </section>
 
