@@ -437,15 +437,14 @@ body {
 
 .card .meta { font-family: var(--font-mono); font-size: 13px; color: var(--faint); }
 
-.card a.card-link {
+.card-link {
   margin-top: auto;
   color: var(--accent);
   font-weight: 600;
   font-size: 15px;
   text-decoration: none;
+  display: inline-block;
 }
-
-.card a.card-link:hover, .card a.card-link:focus-visible { text-decoration: underline; }
 
 /* ---------- Video embed ---------- */
 
