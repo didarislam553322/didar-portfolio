@@ -709,3 +709,110 @@ body {
 @media (max-width: 720px) {
   .prose table { display: block; overflow-x: auto; }
 }
+
+/* ---------- Case study grid cards ---------- */
+
+.card-art-video {
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-art-video svg { width: 42px; height: 42px; color: #fff; }
+
+.card-soon {
+  background: var(--surface);
+  border: 1px dashed var(--hairline);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0.7;
+}
+
+.card-soon .card-art {
+  height: 140px;
+  border-radius: 8px;
+  background: #efedea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.card-soon .card-art svg { width: 36px; height: 36px; color: var(--faint); }
+
+.card-soon h3 { color: var(--soft); }
+
+.card-soon .meta { font-family: var(--font-mono); font-size: 13px; color: var(--faint); }
+
+/* ---------- Case study lead-in and closing ---------- */
+
+.narrow-col { max-width: 68ch; margin: 0 auto; }
+
+.disclaimer-callout {
+  background: var(--rose-tint);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+}
+
+.disclaimer-callout p { margin: 0; color: var(--ink); }
+
+.scroll-callout {
+  background: var(--teal-tint);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 22px;
+}
+
+.scroll-callout p { margin: 0; color: var(--ink); font-size: 14px; font-weight: 500; }
+
+.post-nav {
+  border-top: 1px solid var(--hairline);
+  padding: 32px 0;
+}
+
+.post-nav .author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.post-nav .author-photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.post-nav .author-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 2px;
+}
+
+.post-nav .author-name { font-weight: 600; font-size: 15px; color: var(--ink); }
+.post-nav .author-role { font-size: 13px; color: var(--soft); margin-top: 1px; }
+
+.post-nav .links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.post-nav .links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.post-nav .links a:hover, .post-nav .links a:focus-visible { text-decoration: underline; }
