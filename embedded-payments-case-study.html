@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Took NRR From 97% to 112% With Embedded Payments — Didar Islam</title>
+  <meta name="description" content="A product management case study: embedded payments for a field service SaaS platform, from invoice analysis to a 112% net revenue retention result.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-name" href="index.html">Didar Islam</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="case-studies.html" class="active">Case studies</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <a class="back-link" href="case-studies.html">← All case studies</a>
+    <h1>How I Took NRR From 97% to 112% With Embedded Payments</h1>
+    <div class="post-meta">
+      <span class="tag tag-rasp">Revenue</span>
+      <span class="meta">10 min read · Didar Islam</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap prose">
+<p><em>This is a real project I led as the product manager, with the company's name withheld for confidentiality. I refer to the company as "X" throughout, and every figure in this piece reconciles mathematically.</em></p>
+<p>Every SaaS (Software as a Service: software rented through a monthly subscription instead of purchased once) company eventually faces the same board meeting. New customer growth goes flat, revenue retention slips below 100%, and someone has to decide what comes next. Company X, a field service management platform with 6,800 accounts and roughly $21.9M in ARR (Annual Recurring Revenue: the yearly value of all active subscriptions), reached that meeting. I owned the answer, and I delivered it in collaboration with two engineering squads, two designers, a data analyst, and executive stakeholders across finance, sales, legal, and partnerships.</p>
+<h2>The People and the Timeline</h2>
+<p>The initiative reported into the CPO (Chief Product Officer: the executive who owns product strategy) as executive sponsor, and I reported to the Director of Product. The recurring decision forum was a monthly steering group of the CPO, the CFO (Chief Financial Officer: the top finance executive), and the CRO (Chief Revenue Officer: the executive who owns sales). Around that core sat the specialist functions: Legal, InfoSec, the PMO, the partnerships VP under business development, marketing, and my two engineering squads with two designers and a data analyst.</p>
+<p>The rough shape of the 15 months:</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Months</th>
+<th>What happened</th>
+<th>Who was in the room</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery</td>
+<td>1 to 3</td>
+<td>Invoice analysis, 48 interviews, sizing</td>
+<td>Me, data analyst, designer</td>
+</tr>
+<tr>
+<td>Architecture decision</td>
+<td>3 to 4</td>
+<td>Build/partner/buy presented and signed</td>
+<td>Steering group; CFO signed Option B</td>
+</tr>
+<tr>
+<td>Compliance and build</td>
+<td>4 to 6</td>
+<td>Legal memo, InfoSec review, partner integration</td>
+<td>Legal, InfoSec, PMO, engineering</td>
+</tr>
+<tr>
+<td>Pricing committee</td>
+<td>5</td>
+<td>Fee experiment presented, rate structure set</td>
+<td>CFO, CRO, CPO, me</td>
+</tr>
+<tr>
+<td>Channel resolution</td>
+<td>5 to 7</td>
+<td>Migration offer negotiated and launched</td>
+<td>Partnerships VP, CPO, marketing</td>
+</tr>
+<tr>
+<td>Beta and funnel fix</td>
+<td>7 to 9</td>
+<td>KYC completion issue found and rebuilt from 52% to 81%</td>
+<td>Designers, engineers, data analyst</td>
+</tr>
+<tr>
+<td>General launch</td>
+<td>9</td>
+<td>Full rollout to all 6,800 accounts</td>
+<td>Everyone</td>
+</tr>
+<tr>
+<td>Competitor response</td>
+<td>11 to 12</td>
+<td>Instant payouts shipped instead of a price match</td>
+<td>Steering group, engineering</td>
+</tr>
+<tr>
+<td>Results review</td>
+<td>15</td>
+<td>112% NRR reported; Option C review scheduled</td>
+<td>Board, CPO</td>
+</tr>
+</tbody>
+</table>
+<h2>The Starting Position</h2>
+<p>Company X sold scheduling and invoicing software to plumbing, electrical, and HVAC businesses in three tiers.</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Accounts</th>
+<th>Price/mo</th>
+<th>MRR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Starter</td>
+<td>3,900</td>
+<td>$99</td>
+<td>$386,100</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td>2,300</td>
+<td>$299</td>
+<td>$687,700</td>
+</tr>
+<tr>
+<td>Enterprise</td>
+<td>600</td>
+<td>$1,250 avg</td>
+<td>$750,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>6,800</strong></td>
+<td></td>
+<td><strong>$1,823,800</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The company's NRR (Net Revenue Retention: the percentage of last year's customer revenue that remains today, after cancellations and upgrades) sat at 97%. Cancellations and downgrades cost 5.0 points while upgrades added back only 2.0 points. The board set the mandate: I had 18 months to push NRR above 110%.</p>
+<h2>The Insight Hiding in the Invoice Data</h2>
+<p>I started with behavioral evidence before writing any specification. Our data analyst pulled the invoice exports at my direction, and the analysis showed that 71% of customers generated invoices inside the platform but collected the actual payment outside it, through checks, standalone card readers, or a legacy integration. I then ran 48 customer interviews, with our designer joining half of them to observe workflow pain firsthand, which put a number on the problem: owners spent a median of 6 hours per week on reconciliation (reconciliation: matching bank deposits back to the specific invoices they paid). My willingness-to-pay research using the Van Westendorp method (Van Westendorp: a four-question survey technique that reveals the price range customers find acceptable) across 214 responses showed customers would accept standard card rates of 2.8 to 3.1%.</p>
+<p>The strategy followed directly from this: I would not compete on price; I would compete on reconciliation. Only the system of record (system of record: the software where the official version of the data lives) can automatically match every payment to its invoice.</p>
+<p>I sized the opportunity next. At a modeled 14% attach rate (attach rate: the percentage of existing customers who adopt an add-on product) and $34K in average monthly card-eligible volume per account, roughly $32M per month in GMV (Gross Merchandise Volume: the total money flowing through a product, not the money the company keeps) was moving through customer transactions without touching the platform at all.</p>
+<h2>Build, Partner, or Buy</h2>
+<p>I brought the steering group three fully costed structures for becoming a payments company. Engineering leadership pressure-tested my effort estimates before I presented anything.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Take rate</th>
+<th>Year-1 cost</th>
+<th>Launch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A: Referral</td>
+<td>~5 bps</td>
+<td>~$60K</td>
+<td>1 quarter</td>
+</tr>
+<tr>
+<td>B: Payfac-as-a-service</td>
+<td>55 bps</td>
+<td>$380K</td>
+<td>2 quarters</td>
+</tr>
+<tr>
+<td>C: Full payfac</td>
+<td>95 bps</td>
+<td>$1.2M + $850K/yr compliance</td>
+<td>6+ quarters</td>
+</tr>
+</tbody>
+</table>
+<p>A payfac (payment facilitator: a company legally registered with card networks to process payments on behalf of many businesses) can be rented through a partner or built in-house. The take rates above are in bps (basis points: hundredths of a percent, so 55 bps equals 0.55%).</p>
+<p>In the steering meeting, the CRO initially favored Option C for its richer margins, while the CFO leaned toward Option A to avoid the spend. Both views reflected real priorities, so I put the crossover math on the table to give the group a shared basis for the decision. Option C's extra 40 bps only beats its $850K per year compliance cost above 0.40% × X = $850K, which solves to $212.5M in annual GMV. My projections showed Company X would cross that line eventually, but not before the board's 18-month deadline. I recommended launching on Option B, spending 3 extra engineering weeks on an abstraction layer (abstraction layer: code structured so the underlying partner can be swapped later without a rebuild), and revisiting Option C at month 18 with real volume data, which preserved the CRO's margin ambition as a scheduled decision rather than a rejected one. The group aligned on Option B, and the CFO signed off in the same meeting.</p>
+<p>Legal produced the money-transmission memo that kept Company X outside state licensing requirements. InfoSec reviewed the hosted-fields architecture that kept card data off our servers. The PMO (Project Management Office: the department that coordinates schedules and cross-team dependencies) ran the 9-week compliance process as a tracked program, pursuing bank sponsor due diligence and audit evidence while I stayed focused on the product. I owned the product decisions while the PMO owned the schedule and dependencies.</p>
+<h2>Removing a Fee, Backed by the Numbers</h2>
+<p>In the pricing committee, the CFO proposed a $20 per month platform fee on payments-enabled accounts, backed by a reasonable argument: investors value subscription revenue more highly than payments revenue. Instead of arguing, I recruited our designer to build two pricing-page variants and ran the experiment. The fee variant cut adoption intent by 31%. I then modeled the consequences:</p>
+<ul>
+<li>Fee revenue: 657 adopters × $240/yr = <strong>$157,680</strong></li>
+<li>Deterred accounts: 295 × ($34K × 0.55% × 12) = <strong>$661,980 lost</strong></li>
+<li>Net effect: roughly <strong>$504K worse per year</strong></li>
+</ul>
+<p>After I walked the committee through the numbers, we agreed together to drop the fee, and I made a point of crediting the CFO's underlying logic, since his instinct about revenue quality was sound even though the math pointed the other way. I learned early that experiments move pricing conversations forward faster than opinions do.</p>
+<h2>Channel Conflict, Solved as a Product</h2>
+<p>At launch, 1,100 accounts already used a legacy third-party payments integration worth $138,600 per year in referral rebates, plus a partnership our business development team valued. My new product created direct channel conflict (channel conflict: when a company's new revenue path competes against one of its existing revenue paths or partners), and the partnerships VP escalated it to the CPO before my beta even opened.</p>
+<p>In the escalation meeting, the partnerships VP proposed grandfathering all 1,100 accounts on the old integration permanently, while the CRO proposed sunsetting the integration within 90 days. Both positions had merit, and I worked with the partnerships VP to shape a third path that addressed his relationship concerns and the CRO's revenue goals at once: existing integration users received a 12-month fee match plus the one feature a third-party processor can never offer, automatic invoice-to-payment reconciliation, with migration left entirely voluntary. We aligned on the approach together before it went back to the CPO. Marketing built the migration campaign, and sales enablement trained the account reps on the offer.</p>
+<p>The results validated the approach: 451 of 1,100 accounts (41%) migrated voluntarily in the first year. The revenue gained was 451 × $34K × 0.55% = $84,337 per month (~$1.01M per year) against $56,826 per year in lost rebates. That trade returned roughly 17 dollars for every 1 dollar it gave up, and the partnership survived because the remaining 649 accounts stayed untouched. The partnerships VP went from escalating against the product to presenting the migration numbers at the quarterly review himself.</p>
+<h2>Fixing Onboarding and Responding to a Competitor's Price Cut</h2>
+<p>My beta surfaced a real problem: only 52% of customers completed KYC onboarding (KYC, Know Your Customer: the legally required identity verification that payments providers must run on every business). Owners abandoned the application when it demanded SSNs and bank statements without warning. Our data analyst instrumented the funnel and found 68% of the drop-off concentrated at two steps. The designers rebuilt the flow with an upfront document checklist and save-and-resume capability, while the engineering squads pre-filled business data the company already held. I prioritized the fixes and defined the success metric. Completion rose to 81%, and median time-to-first-payment fell from 11 days to 3.</p>
+<p>Eight months in, the category leader launched embedded payments at a promotional 2.6% rate against our 2.9%. The CRO raised an understandable concern and requested a price match, since his teams were hearing about the competitor rate in live deals; matching, however, would have halved the product's P&amp;L (P&amp;L, profit and loss: the product's own income statement). I brought the interview and elasticity data to the steering group, showing adoption was driven by reconciliation pain rather than rate, and proposed answering with a feature instead of a discount. The group weighed both paths, the CPO supported the feature route, and the CFO approved the instant-payout pricing in the same session. We shipped instant payouts (instant payouts: same-day delivery of card revenue to the business's bank account, versus the standard 1-to-2-day settlement) for a 1% fee instead of discounting. The competitor ended the promotion two quarters later, and our margin held.</p>
+<h2>The Results</h2>
+<ul>
+<li>We reached <strong>1,088 attached accounts</strong> (637 net-new + 451 migrated), a 16.0% attach rate against my 14% model</li>
+<li>GMV: 1,088 × $34K = <strong>$37.0M per month</strong> (~$444M annualized, past the payfac crossover point)</li>
+<li>Net revenue: $203,456/mo from core processing + $51,850/mo from instant payouts (305 accounts × $34K × 50% × 1%) = <strong>$255,306 per month, ~$3.1M per year run-rate</strong> (run-rate: the current monthly pace multiplied by twelve)</li>
+<li>Churn moat: payments-attached accounts churned at 0.9% per month versus 1.8% for non-attached accounts (churn: the rate at which customers cancel)</li>
+<li>NRR: 100 − 4.2 (improved churn) + 2.0 (upgrades) + 14.0 (payments expansion: $255,306 ÷ $1,823,800) = <strong>111.8% ≈ 112%</strong></li>
+</ul>
+<p>We beat the board's 110% target, and payments drove 14 of the 15 points of improvement.</p>
+<h2>What This Case Demonstrates</h2>
+<p>I treat handed-down strategy as a hypothesis to validate with evidence. I size the money before I write a specification. When executives hold competing views, I bring the math that lets the group decide together, and I make sure the people whose proposals lose still see their concerns reflected in the final path. I resolve conflicts between teams by designing solutions that serve both sides rather than picking winners. I set product direction, and I depend on legal, InfoSec, the PMO, designers, and engineers to turn that direction into something real. And when a competitor cuts price, we check what customers actually adopted the product for before deciding whether to follow.</p>
+<p>Every figure in this case derives from three primitives: 6,800 accounts, $34K in monthly volume, and 55 bps of take. Pull any thread and the math holds.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>I help drive user growth and turn product adoption into revenue.</h2>
+    <div class="cta-actions">
+      <a class="btn btn-solid" href="mailto:abdullahdidar3@gmail.com">Email me</a>
+      <a class="btn btn-teal" href="https://www.linkedin.com/in/didar-islam" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 Didar Islam</p>
+    <p><a href="mailto:abdullahdidar3@gmail.com">abdullahdidar3@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
