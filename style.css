@@ -558,6 +558,14 @@ body {
 
 .contact-list a:hover, .contact-list a:focus-visible { border-color: var(--accent); }
 
+.contact-card-rasp { background: var(--rose-tint); border-color: #ecc4d1; }
+.contact-card-rasp .value { color: #9c2143; }
+.contact-card-rasp:hover, .contact-card-rasp:focus-visible { border-color: var(--accent); }
+
+.contact-card-teal { background: var(--teal-tint); border-color: #c2d9d5; }
+.contact-card-teal .value { color: var(--teal-ink); }
+.contact-card-teal:hover, .contact-card-teal:focus-visible { border-color: var(--teal); }
+
 .contact-list .value {
   font-family: var(--font-mono);
   font-weight: 400;
@@ -576,8 +584,10 @@ body {
   .hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .hero-card { display: none; }
   .hero-id-strip { display: flex; }
-  .nav-links { gap: 18px; }
-  .nav-links a { font-size: 14px; }
+  .nav .wrap { height: 54px; }
+  .nav-name { font-size: 16px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 13px; }
   .ledger li { grid-template-columns: 44px 1fr; }
   .ledger .figure { grid-column: 2; justify-self: start; }
 }
