@@ -599,19 +599,35 @@ body {
 /* ---------- Blog card art ---------- */
 
 .card-art {
-  height: 130px;
+  height: 140px;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
   margin-bottom: 4px;
 }
 
-.card-art svg { width: 60px; height: 60px; }
+.card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-.art-rasp  { background: var(--rose-tint);  color: var(--accent); }
-.art-mari  { background: var(--amber-tint); color: var(--amber-ink); }
-.art-olive { background: var(--teal-tint);  color: var(--teal-ink); }
+.post-cover {
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 8px 0 0;
+}
+
+.post-cover img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .post-cover img { height: 220px; }
+}
 
 /* ---------- Post pages ---------- */
 
