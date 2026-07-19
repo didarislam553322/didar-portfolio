@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluating AI Feature Proposals: A Strategic Checklist — Didar Islam</title>
+  <meta name="description" content="A checklist for AI proposals covering unit economics, error tolerance, defensibility, and the go-to-market claim.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-name" href="index.html">Didar Islam</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="case-studies.html">Case studies</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <a class="back-link" href="blog.html">← All posts</a>
+    <h1>Evaluating AI Feature Proposals: A Strategic Checklist</h1>
+    <div class="post-meta">
+      <span class="tag tag-mari">Strategy</span>
+      <span class="meta">3 min read · Didar Islam</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap prose">
+<p>Artificial intelligence features now appear in most product roadmap discussions, often justified by competitive anxiety rather than user need. This post presents a six-question checklist for evaluating an AI feature proposal before committing engineering capacity, with the economics made explicit.</p>
+<h2>Question 1: What problem does this solve without the word "AI" in the sentence?</h2>
+<p>Restate the proposal as a user problem. "Add an AI assistant" is a technology; "reduce the 40 minutes users spend drafting routine status reports" is a problem. If the restatement is impossible, the proposal is a solution seeking a justification, and market research, the structured study of user needs and competitive offerings, should precede any build decision. Interviews and demand testing establish whether the pain is real and how many users share it.</p>
+<h2>Question 2: Is probabilistic output acceptable in this workflow?</h2>
+<p>AI systems are probabilistic: identical inputs can yield varying outputs, and a known error rate is intrinsic. Some workflows tolerate this well (drafting, summarization, recommendation), because a human reviews the output. Others do not (compliance filings, financial postings, inventory commitments). The test is the cost of a single wrong output multiplied by its frequency. A feature that is 95% accurate produces one error per twenty uses; at 1,000 daily uses, that is 50 daily errors the workflow must absorb.</p>
+<h2>Question 3: Do the unit economics survive scale?</h2>
+<p>AI features carry marginal cost per use, unlike conventional software features whose marginal cost approaches zero. Suppose inference costs $0.04 per request and the average subscriber makes 400 requests monthly: the feature costs $16 per user per month. If the subscription price is $29, the feature consumes 55% of revenue. This is where pricing strategy, the design of how a product captures value, becomes inseparable from the build decision: the options are usage caps, a premium tier, or absorbing the margin, and each changes the product's positioning. A proposal without a unit-cost model is unevaluated.</p>
+<h2>Question 4: What data advantage, if any, makes this defensible?</h2>
+<p>If a feature is a thin layer over a model any competitor can license, parity arrives within a quarter. Defensibility comes from proprietary inputs: unique data, workflow context, or distribution. A CPG (Consumer Packaged Goods) demand-forecasting product trained on a retailer's own sell-through history, or one integrated with transaction records inside an ERP (Enterprise Resource Planning) system such as SAP, has an input competitors cannot copy. A generic chatbot does not.</p>
+<h2>Question 5: How will quality be measured after launch?</h2>
+<p>Conventional features are done when they pass acceptance tests; AI features drift as usage patterns and underlying models change. The proposal must name its quality metrics (accuracy against a labeled evaluation set, user acceptance rate of suggestions, correction frequency) and its review cadence. A feature nobody plans to measure will degrade unobserved.</p>
+<h2>Question 6: What is the go-to-market claim, precisely?</h2>
+<p>Go-to-market (GTM) strategy, the plan for reaching and converting the target market, requires a claim that marketing can state and the product can survive. "Cuts report drafting time by half, verified in beta with 200 users" is a durable claim. "AI-powered" is a category label that differentiates nothing by the time it ships.</p>
+<h2>Practical Summary</h2>
+<p>An AI feature proposal is ready for the roadmap when it names a problem independent of the technology, fits a workflow that tolerates error, carries a unit-cost model that survives its own success, rests on a defensible input, commits to post-launch measurement, and supports a verifiable market claim. Proposals that pass all six are rarer than current roadmaps suggest, which is precisely the argument for the checklist.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>I want my next product management role in B2B SaaS, data, or AI.</h2>
+    <div class="cta-actions">
+      <a class="btn btn-solid" href="mailto:abdullahdidar3@gmail.com">Email me</a>
+      <a class="btn btn-teal" href="https://www.linkedin.com/in/didar-islam" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 Didar Islam</p>
+    <p><a href="mailto:abdullahdidar3@gmail.com">abdullahdidar3@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

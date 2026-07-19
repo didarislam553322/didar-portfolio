@@ -551,3 +551,57 @@ body {
 @media (max-width: 480px) {
   .skills-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- Blog card art ---------- */
+
+.card-art {
+  height: 130px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.card-art svg { width: 60px; height: 60px; }
+
+.art-rasp  { background: var(--rose-tint);  color: var(--accent); }
+.art-mari  { background: var(--amber-tint); color: var(--amber-ink); }
+.art-olive { background: var(--teal-tint);  color: var(--teal-ink); }
+
+/* ---------- Post pages ---------- */
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.post-meta .meta { font-size: 14px; color: var(--faint); }
+
+.prose ul, .prose ol { margin: 0 0 18px 22px; }
+
+.prose li { margin-bottom: 8px; }
+
+.prose strong { font-weight: 600; }
+
+.prose .formula {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 14px 18px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.back-link:hover, .back-link:focus-visible { text-decoration: underline; }

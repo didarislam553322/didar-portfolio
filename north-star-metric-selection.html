@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecting and Validating a North Star Metric — Didar Islam</title>
+  <meta name="description" content="Three selection criteria, a worked decomposition, and the validation step most teams skip entirely.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-name" href="index.html">Didar Islam</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="case-studies.html">Case studies</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <a class="back-link" href="blog.html">← All posts</a>
+    <h1>Selecting and Validating a North Star Metric</h1>
+    <div class="post-meta">
+      <span class="tag tag-rasp">Frameworks</span>
+      <span class="meta">3 min read · Didar Islam</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap prose">
+<p>A north star metric is the single measure a product team treats as its primary indicator of delivered value. The concept exists to solve a coordination problem: when every function optimizes its own dashboard, the product optimizes for nothing in particular. This post defines the selection criteria, works through an example, and describes how to validate the choice.</p>
+<h2>Selection Criteria</h2>
+<p>A defensible north star metric satisfies three conditions.</p>
+<p>First, it must measure value received by the user, not value extracted from the user. Revenue growth is an outcome of a good north star, not the north star itself, because revenue can rise temporarily while user value falls (for example, through aggressive pricing on a captive customer base).</p>
+<p>Second, it must be a leading indicator, meaning it moves before the business results do. Product adoption metrics typically lead; churn and revenue typically lag.</p>
+<p>Third, every team must be able to influence it. A metric only the sales team can move cannot coordinate a product organization.</p>
+<h2>A Worked Example</h2>
+<p>Consider a spreadsheet collaboration product. Candidate metrics include registered accounts, weekly active users, and documents edited by two or more people per week.</p>
+<p>Registered accounts fails the first criterion: an account that never returns received no value. Weekly active users is better but still ambiguous, since a user who opens the product and leaves counts as active. Documents edited by two or more people per week passes all three tests: it captures the collaborative value the product exists to deliver, it leads revenue (teams that collaborate renew), and engineering, design, and marketing can all influence it.</p>
+<p>The metric can then be decomposed into an input equation:</p>
+<p>Multi-editor documents per week = New accounts × Activation rate × Collaboration rate × Weekly retention</p>
+<p>If the current values are 1,000 new accounts, 40% activation, 30% collaboration, and 60% retention, the product generates 1,000 × 0.40 × 0.30 × 0.60 = 72 multi-editor documents per week from each new cohort. The decomposition shows where leverage sits: raising activation from 40% to 50% yields 90 documents, an 25% improvement from a single input. Teams assign ownership at the input level while the north star stays shared.</p>
+<h2>Instrumentation and Validation</h2>
+<p>Measurement requires event-level analytics. Product analytics platforms such as Amplitude and Mixpanel track the behavioral inputs (activation, collaboration events, retention cohorts), while Adobe Analytics and Google Analytics typically cover acquisition traffic feeding the top of the equation. Visualization layers such as Looker or Tableau then combine these sources into a single tree that the whole company reads the same way.</p>
+<p>Validation is the step most teams skip. A north star is a hypothesis that the chosen behavior predicts business results, and hypotheses require testing. The test is correlation over cohorts: segment historical accounts by their level of the north star behavior in their first month, then compare twelve-month retention and expansion revenue across segments. If accounts with high early collaboration retain at 85% while low-collaboration accounts retain at 40%, the metric is validated. If the segments retain identically, the metric is decorative and should be replaced.</p>
+<h2>Practical Summary</h2>
+<p>Choose a metric that measures user value, leads revenue, and is influenceable by every team. Decompose it into inputs so that ownership is assignable and the arithmetic of improvement is visible. Then validate it against retention cohorts before asking an organization to steer by it. A north star that fails validation is worse than no metric at all, because it aims the entire company at a number that does not matter.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>I want my next product management role in B2B SaaS, data, or AI.</h2>
+    <div class="cta-actions">
+      <a class="btn btn-solid" href="mailto:abdullahdidar3@gmail.com">Email me</a>
+      <a class="btn btn-teal" href="https://www.linkedin.com/in/didar-islam" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 Didar Islam</p>
+    <p><a href="mailto:abdullahdidar3@gmail.com">abdullahdidar3@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

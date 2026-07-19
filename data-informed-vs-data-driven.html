@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data-Informed Versus Data-Driven Decision Making in Product Development — Didar Islam</title>
+  <meta name="description" content="When the metric should decide, when it should only advise, and a two-axis rule for telling the difference.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-name" href="index.html">Didar Islam</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="case-studies.html">Case studies</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <a class="back-link" href="blog.html">← All posts</a>
+    <h1>Data-Informed Versus Data-Driven Decision Making in Product Development</h1>
+    <div class="post-meta">
+      <span class="tag tag-mari">Strategy</span>
+      <span class="meta">3 min read · Didar Islam</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap prose">
+<p>The two phrases are used interchangeably, but they describe different decision procedures. Data-driven decision making treats the metric as the decision rule: the number decides. Data-informed decision making treats the metric as one input weighed alongside qualitative evidence, strategic intent, and domain judgment. This post defines the distinction, shows where each procedure fails, and proposes a rule for choosing between them.</p>
+<h2>The Case for Data-Driven</h2>
+<p>When the decision is repeatable, the metric is well-instrumented, and the cost of error is low, letting the number decide is correct. Button placement, subject-line testing, and ranking-algorithm tuning are the canonical cases: an experiment produces a winner, and overriding the winner with opinion adds error.</p>
+<p>The infrastructure behind such decisions is a pipeline. Raw events land in a cloud data warehouse such as Snowflake; transformation tooling such as dbt (data build tool) converts raw events into modeled tables; SQL (Structured Query Language) queries produce the comparison; and the analysis surfaces in anything from Excel to dedicated business analysis tools. When this pipeline is trustworthy, high-volume low-stakes decisions should run through it without ceremony.</p>
+<h2>Where Data-Driven Fails</h2>
+<p>The procedure fails in three predictable ways.</p>
+<p>First, metrics measure the past of the current product. No query against existing usage data could have justified building a product category that does not yet exist, because the data describes behavior inside today's boundaries.</p>
+<p>Second, metrics optimize what they measure, including its side effects. A team driven purely by session length will ship features that extend sessions, whether or not longer sessions serve users. The formal name is surrogation: the measure replaces the goal it was meant to represent.</p>
+<p>Third, small samples masquerade as evidence. Suppose a pricing test shows variant B converting at 5.5% against variant A at 5.0%, from 800 users per arm. That is 44 conversions against 40, a difference well within sampling noise; a standard significance test would not reject the hypothesis that the variants are identical. A data-driven procedure that ships B "because the number is higher" is executing noise. Sample size arithmetic is the minimum protection: detecting a half-point lift from a 5% baseline reliably requires several thousand users per arm, not hundreds.</p>
+<h2>The Case for Data-Informed</h2>
+<p>Data-informed procedure adds two inputs the warehouse does not contain. The first is qualitative signal: feedback analysis, the systematic review of support tickets, interview transcripts, and reviews, captures the reasons behind behavior. Twenty churned-customer interviews can identify a cause that ten thousand rows of churn data only describe. The second is strategic intent: a company entering a new segment may correctly ship a feature the current usage data ranks last, because the data reflects the customers it has rather than the customers it wants.</p>
+<p>The risk of data-informed procedure is equally predictable: "informed" degrades into "decorative," where the data is consulted and then overridden by seniority. The protection is a written record. If a decision contradicts the metric, the reasoning and the expected result are logged, and the result is checked. Overrides that repeatedly fail their own predictions lose the privilege.</p>
+<h2>A Decision Rule</h2>
+<p>Classify each decision on two axes: reversibility and measurement quality. Reversible decisions with strong instrumentation should be data-driven; the experiment decides. Irreversible decisions, or those where the relevant evidence is qualitative or strategic, should be data-informed, with the dissenting data acknowledged in writing.</p>
+<p>The summary discipline is this: the question is never whether to use data, but whether the data available is sufficient to be the decision rule. When it is, defer to it. When it is not, say so explicitly and record the judgment being added, so that the judgment itself becomes measurable over time.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>I want my next product management role in B2B SaaS, data, or AI.</h2>
+    <div class="cta-actions">
+      <a class="btn btn-solid" href="mailto:abdullahdidar3@gmail.com">Email me</a>
+      <a class="btn btn-teal" href="https://www.linkedin.com/in/didar-islam" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 Didar Islam</p>
+    <p><a href="mailto:abdullahdidar3@gmail.com">abdullahdidar3@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

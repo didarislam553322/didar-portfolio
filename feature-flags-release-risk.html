@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Flags and Release Risk Management — Didar Islam</title>
+  <meta name="description" content="Separating deployment from exposure, the arithmetic of blast radius, and the three disciplines that make flags pay.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-name" href="index.html">Didar Islam</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="case-studies.html">Case studies</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <a class="back-link" href="blog.html">← All posts</a>
+    <h1>Feature Flags and Release Risk Management</h1>
+    <div class="post-meta">
+      <span class="tag tag-olive">Technical</span>
+      <span class="meta">3 min read · Didar Islam</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap prose">
+<p>A feature flag is a configuration switch that turns product functionality on or off at runtime without deploying new code. The technique separates two events that traditional releases bundle together: shipping code to production and exposing it to users. This post explains the mechanics, quantifies the risk reduction, and outlines the operational disciplines the technique requires.</p>
+<h2>The Mechanics</h2>
+<p>In a conventional release, code deployment and user exposure are the same moment; every user receives the change simultaneously, and reversal requires a new deployment. With a flag, the code deploys dark, meaning it is present in production but inactive. Exposure is then controlled by configuration: the flag can activate the feature for internal accounts only, for 1% of traffic, for a named list of customers, or for everyone.</p>
+<p>This restructures the Software Development Life Cycle (SDLC), the process spanning planning, development, testing, release, and maintenance. Testing no longer ends at the staging environment. Quality Assurance (QA) validates the feature in production itself, behind the flag, against real data and real infrastructure, before any customer sees it.</p>
+<h2>Quantifying the Risk Reduction</h2>
+<p>The value of progressive exposure is arithmetic. Suppose a SaaS (Software as a Service) platform serves 200,000 users and a release contains a defect that corrupts a workflow for affected users. A conventional release exposes all 200,000 immediately. A flagged rollout at 1% exposes 2,000; if monitoring detects the defect within the first stage, the blast radius is reduced 99%, and remediation is a configuration change taking seconds rather than an emergency deployment taking hours.</p>
+<p>Rollout stages typically follow a doubling schedule: 1%, 5%, 25%, 50%, 100%, with a defined soak period and health criteria at each stage. The health criteria should be written before the rollout begins, for example: "proceed only if error rate remains under 0.5% and p95 latency under 300 milliseconds." Written criteria prevent the common failure of advancing a rollout on optimism.</p>
+<p>Flags also enable A/B testing at the infrastructure level, since a flag that exposes 50% of users is structurally an experiment. For B2B and digital platforms, the same mechanism handles contractual staging: a flag scoped to named enterprise accounts lets a vendor pilot functionality with consenting customers before general availability.</p>
+<h2>Operational Requirements</h2>
+<p>The technique carries real costs, and three disciplines determine whether it pays.</p>
+<p>The first is observability. Progressive rollout only reduces risk if the team can see stage-level health. Event pipelines, commonly built on streaming infrastructure such as Kafka, must tag telemetry with flag state so that the 1% cohort's error rate is separable from the 99% control.</p>
+<p>The second is flag hygiene. Every flag is a conditional branch in the codebase, and a system with 200 stale flags has 2^200 theoretical states, which is untestable. The standard remedy is an expiry convention: every flag is created with an owner and a removal date, and flags past their date block the next release until resolved.</p>
+<p>The third is decision authority. A rollout needs a named owner empowered to halt it. Ambiguity about who can pull the flag during an incident converts a seconds-long remediation back into a meeting.</p>
+<h2>Practical Summary</h2>
+<p>Feature flags convert release risk from a single all-or-nothing event into a controlled sequence with measurable checkpoints and instant reversal. The prerequisites are stage-level monitoring, disciplined flag removal, and clear halt authority. Teams that meet the prerequisites ship faster precisely because each individual exposure decision carries less risk; the ones that skip them trade release risk for complexity risk and come out behind.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>I want my next product management role in B2B SaaS, data, or AI.</h2>
+    <div class="cta-actions">
+      <a class="btn btn-solid" href="mailto:abdullahdidar3@gmail.com">Email me</a>
+      <a class="btn btn-teal" href="https://www.linkedin.com/in/didar-islam" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 Didar Islam</p>
+    <p><a href="mailto:abdullahdidar3@gmail.com">abdullahdidar3@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
