@@ -987,3 +987,44 @@ body {
   .ed-skills-grid { grid-template-columns: 1fr; }
   .ed-hero h1 { font-size: 26px; }
 }
+
+/* ---------- Editorial About page ---------- */
+
+.ed-about-lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 56ch;
+  margin: 0;
+}
+
+.ed-achievements { list-style: none; margin: 14px 0 0; padding: 0; max-width: 62ch; }
+.ed-achievements li {
+  font-size: 14.5px;
+  line-height: 1.6;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.ed-achievements li:last-child { border-bottom: none; }
+
+.ed-edu-list { max-width: 62ch; }
+.ed-edu-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 14.5px;
+}
+.ed-edu-row:last-child { border-bottom: none; }
+.ed-edu-row .what { color: var(--ink); }
+.ed-edu-row .where { color: var(--soft); font-size: 13px; white-space: nowrap; }
+
+.ed-stop-body { font-size: 14.5px; line-height: 1.65; color: var(--ink); margin-top: 8px; max-width: 62ch; }
+
+@media (max-width: 560px) {
+  .ed-edu-row { flex-direction: column; gap: 2px; }
+}
