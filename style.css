@@ -949,6 +949,9 @@ body {
 .ed-hcard:last-child { margin-bottom: 0; }
 .ed-hcard-media { width: 100%; aspect-ratio: 16/9; overflow: hidden; margin-top: 18px; background: var(--ink); position: relative; }
 .ed-hcard-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ed-hcard-media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.ed-hcard-body-link { text-decoration: none; color: inherit; display: block; }
+.ed-hcard-body-link:hover .ed-hcard-link { opacity: 0.6; }
 .ed-hcard-media .ed-play {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: 13px; letter-spacing: 0.06em; text-align: center; padding: 16px;
