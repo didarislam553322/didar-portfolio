@@ -269,7 +269,7 @@ body {
 
 /* ---------- Sections ---------- */
 
-.section { padding: 84px 0; border-top: 1px solid var(--hairline); }
+.section { padding: 56px 0; border-top: 1px solid var(--hairline); }
 
 .section-head {
   display: flex;
@@ -859,7 +859,7 @@ body {
    Studies, and Contact keep their existing look.
    ============================================ */
 
-.ed-section { padding: 84px 0; border-top: 1px solid var(--hairline); }
+.ed-section { padding: 56px 0; border-top: 1px solid var(--hairline); }
 .ed-section:first-of-type { border-top: none; }
 
 .ed-eyebrow-num {
@@ -905,7 +905,8 @@ body {
 
 @media (max-width: 720px) {
   .ed-hero-grid { grid-template-columns: 1fr; }
-  .ed-hero-photo-large { max-width: 220px; aspect-ratio: 1/1; margin-top: 28px; }
+  .ed-hero-photo-large { max-width: 300px; aspect-ratio: 1/1; margin: 28px auto 0; }
+  .ed-pill-row { justify-content: center; }
 }
 
 .ed-pullquote {
